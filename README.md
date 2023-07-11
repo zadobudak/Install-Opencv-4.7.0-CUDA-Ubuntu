@@ -1,6 +1,7 @@
 # Install-Opencv-4.7-CUDA-Ubuntu
-Simple guide for installing opencv 4.7.0  on Ubuntu with Cuda and Cudnn. 
-
+Simple guide for installing opencv 4.7.0  on Ubuntu with Cuda and Cudnn. \
+(To install opencv with cuda on NVIDIA Jetson Nano, skip to the end of this guide)\
+\
 There are 4 main components of installing opencv with Cuda on Ubuntu. 
 
 ## 1. Install cuda.
@@ -223,15 +224,17 @@ import cv2
 print(cv2.getBuildInformation())
 print(f"The opencv version is: {cv2.__version__}")
 ```
+If you see the correct version intalled with the CUDA and cudnn, you are done with the opencv installation!
 
 
 
-
-### jetson nano:
+# To install opencv with cuda on jetson nano:
 
 If you are trying to build opencv 4.7 with cuda on jetson nano, you can look at [this](https://github.com/Qengineering/Install-OpenCV-Jetson-Nano/blob/main/OpenCV-4-7-0.sh) bash script and use it part by part or directly run it, or you can have a look at [this](https://qengineering.eu/install-opencv-on-jetson-nano.html) tutorial.\
 \
 WARNING: You have to increase your nano's swap memory in order to build using 4 cores.
+
+
 
 
 
