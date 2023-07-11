@@ -1,7 +1,19 @@
 # Install-Opencv-4.7-CUDA-Ubuntu
-Simple guide for installing opencv 4.7.0  on Ubuntu with Cuda and Cudnn. 
 
+Simple guide for installing Opencv 4.7.0  on Ubuntu with CUDA and Cudnn. 
+
+<!-- not sure if this line is really needed. -->
 There are 4 main components of installing opencv with Cuda on Ubuntu. 
+
+- [Install-Opencv-4.7-CUDA-Ubuntu](#install-opencv-47-cuda-ubuntu)
+  - [1. Install cuda.](#1-install-cuda)
+  - [2. Install cudnn.](#2-install-cudnn)
+      - [\*\*\*The following installation steps are for network installation:](#the-following-installation-steps-are-for-network-installation)
+      - [\*\*\*From now on, the following installation steps are for tar file installation:](#from-now-on-the-following-installation-steps-are-for-tar-file-installation)
+  - [3. Install the related nvidia driver.](#3-install-the-related-nvidia-driver)
+  - [4. Build Opencv from source with Cuda and Cudnn enabled.](#4-build-opencv-from-source-with-cuda-and-cudnn-enabled)
+    - [jetson nano:](#jetson-nano)
+
 
 ## 1. Install cuda.
 
