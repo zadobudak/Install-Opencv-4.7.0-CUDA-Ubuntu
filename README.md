@@ -1,97 +1,89 @@
 # Install-Opencv-4.7-CUDA-Ubuntu
-Simple guide for installing opencv 4.7.0  on Ubuntu with Cuda and Cudnn. \
+Simple guide for installing opencv 4.7.0  on Ubuntu with Cuda and cuDNN. \
 (To install opencv with cuda on NVIDIA Jetson Nano, skip to the end of this guide)\
 \
 There are 4 main components of installing opencv with Cuda on Ubuntu. 
 
 - [Install-Opencv-4.7-CUDA-Ubuntu](#install-opencv-47-cuda-ubuntu)
   - [1. Install cuda.](#1-install-cuda)
-  - [2. Install cudnn.](#2-install-cudnn)
+  - [2. Install cuDNN.](#2-install-cuDNN)
       - [\*\*\*The following installation steps are for network installation:](#the-following-installation-steps-are-for-network-installation)
       - [\*\*\*From now on, the following installation steps are for tar file installation:](#from-now-on-the-following-installation-steps-are-for-tar-file-installation)
   - [3. Install the related nvidia driver.](#3-install-the-related-nvidia-driver)
-  - [4. Build Opencv from source with Cuda and Cudnn enabled.](#4-build-opencv-from-source-with-cuda-and-cudnn-enabled)
+  - [4. Build Opencv from source with Cuda and cuDNN enabled.](#4-build-opencv-from-source-with-cuda-and-cuDNN-enabled)
     - [jetson nano:](#jetson-nano)
 
 
-## 1. Install cuda.
+## 1. Install CUDA
 
-Visit the [cuda download link](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_network)
-\
+Open the [CUDA download link.](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_network)
 \
 \
 \
 In this example, the related NVIDIA driver version is 535 which is present in the file named:\
-"cuda-repo-ubuntu2004-12-2-local_12.2.0-535.54.03-1_amd64.deb"\
+"cuda-repo-ubuntu2004-12-2-local_12.2.0-**535**.54.03-1_amd64.deb"\
 We will need to install this driver version which will be shown in the next steps.
 ![example cuda installation](images/cuda_install_options.png)\
 \
 After performing the operations above, you will have the CUDA installed.
 
-## 2. Install cudnn.
+## 2. Install cuDNN.
 
-The official guide: [guide link](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)\
-
-#### ***The following installation steps are for network installation:
+The official guide: [guide link](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
+### The following installation steps are for network installation:
+You directly can use this [link](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#package-manager-ubuntu-install) to reach the following bash commands:\
+![cuDNN network installation](images/cudnn_network.png)
 \
 \
-\
-You directly can use this [link](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#package-manager-ubuntu-install) to reach the following bash commands:
-![cudnn network installation](images/cudnn_network.png)
-\
-\
-To find cudnn_version and cuda_version, use tab button to autocomplete.\
-Example bash commands:\
-\
+To find cuDNN_version and cuda_version, use tab button to autocomplete.\
+Example bash commands for cuDNN 8.9.2 (CUDA 12.X):
+```
 sudo apt-get install libcudnn8=8.9.2.26-1+cuda12.1 \
 sudo apt-get install libcudnn8-dev=8.9.2.26-1+cuda12.1 \
-sudo apt-get install libcudnn8-samples=8.9.2.26-1+cuda12.1 \
+sudo apt-get install libcudnn8-samples=8.9.2.26-1+cuda12.1 
+```
+\
+After the installation, you can check if the cuDNN works properly by following the steps in [this](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#verify) link.
+### From now on, the following installation steps are for tar file installation:
+!!(Do not go through this steps if you did the network installation)!!
 \
 \
 \
-\
-After the installation, you can check if the cudnn works properly by following the steps in [this](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#verify) link.\
-\
-\
-\
-\
-.
-#### ***From now on, the following installation steps are for tar file installation:
-(Do not go through this steps if you did the network installation)
-\
-\
-\
-To download cudnn in tar version and install, it is necessary to have a NVIDIA account. After you sign in, go to the [download link](https://developer.nvidia.com/rdp/cudnn-download) and download the related cudnn version:
-![example cudnn tar download](images/cudnn_download.png)
+To download cuDNN in tar version and install, it is necessary to have a NVIDIA account. After you sign in, go to the [download link](https://developer.nvidia.com/rdp/cudnn-download) and download the related cuDNN version:\
+![example cuDNN tar download](images/cudnn_download.png)
 
 \
 \
-When the download is finished, follow the installation steps:
+When the download is finished, follow the installation steps:\
+![example cuDNN installation](images/cudnn_install.png)
 
-![example cudnn installation](images/cudnn_install.png)
-
 \
 \
-After the installation, you can check if the cudnn works properly by following the steps in [this](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#verify) link.\
+After the installation, you can check if the cuDNN works properly by following the steps in [this](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#verify) link.\
 \
-Before that, you should download the cudnn samples with the following bash command in [this](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#package-manager-ubuntu-install) part starting with "libcudnn8-samples".\
+Before that, you should download the cuDNN samples with the following bash command in [this](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#package-manager-ubuntu-install) part starting with "libcudnn8-samples".\
 \
-For compleating the cudnn and cuda versions in shell, use tab button to autocompleate in desired versions.
+For completing the cuDNN and cuda versions in shell, use tab button to autocomplete in desired versions.
 ## 3. Install the related nvidia driver.
 \
 \
-Search for the software & update application which is shown in the image below (the purple colored one).
-![example cudnn installation](images/software_update.png)
+Search for the software & update application which is shown in the image below (the purple colored one).\
+![example cuDNN installation](images/software_update.png)
 \
 \
-Then, go the the "Additional Drivers" section.
-![example cudnn installation](images/nvidia_driver_example.png)
+Then, go to the "Additional Drivers" section.\
+![example cuDNN installation](images/nvidia_driver_example.png)
 \
 \
-Select the correct driver version (also do not install server drivers) and apply changes.
+Select the correct driver version (also do not install server drivers) and apply changes.\
+\
+After the driver installation, reboot the system. Then run the following command:\
+```nvidia-smi```
+If you see the correct version installed in the screen, you are done with the GPU driver installation.\
+Note: The CUDA version in the top-right corner of the screen is **not** showing the version your system has. It shows the most recent supported CUDA version for your driver. If you want to see the CUDA version, run the `nvcc --version` command.
+![example cuDNN installation](images/nvidia-smi.png)
 
-
-## 4. Build Opencv from source with Cuda and Cudnn enabled. 
+## 4. Build Opencv from source with CUDA and cuDNN enabled. 
 \
 \
 For this part, you have to install cmake and a proper C++ compiler.\
@@ -105,12 +97,13 @@ For this purpose, run the following commands:\
 If you haven't installed python yet, then install it and the numpy library:
 \
 \
-`$ sudo apt install python3 python3-dev python3-numpy\`
+`$ sudo apt install python3 python3-dev python3-numpy`
 \
 \
 \
 Install the other dependencies:\
 \
+#### The packages to install will be re written . TODO
 ```sh
 sudo apt-get install build-essential cmake pkg-config unzip yasm git checkinstall
 sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libopenjp2-7-dev
@@ -198,7 +191,6 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D ENABLE_FAST_MATH=ON \
 -D CUDA_FAST_MATH=ON \
 -D OPENCV_DNN_CUDA=ON \
--D ENABLE_NEON=ON \
 -D WITH_QT=ON \
 -D WITH_OPENMP=ON \
 -D BUILD_TIFF=ON \
@@ -219,22 +211,22 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D BUILD_EXAMPLES=OFF ..
 ```
 If the configuring is done without any problem, you are ready to run the make command.\
-Change the 8 with the number of cores in you CPU that you want to utilize in the build process. \
+Change the 8 with the number of cores in your CPU that you want to utilize in the build process. \
 `make -j8`\
 \
-After the make in done, you are ready to install.\
+After the make in done, you are ready to install.
 ```
 sudo make install
 sudo ldconfig
 sudo apt-get update
 ```
-To check, you can open the python interpreter, and run:\
-```python
+To check, you can open the python interpreter, and run:
+```py
 import cv2
 print(cv2.getBuildInformation())
 print(f"The opencv version is: {cv2.__version__}")
 ```
-If you see the correct version intalled with the CUDA and cudnn, you are done with the opencv installation!
+If you see the correct version intalled with the CUDA and cuDNN, you are done with the opencv installation!
 
 
 
